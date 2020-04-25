@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-         PoolManager.putGameObjectToPool(gameObject); //Any collision destroy this object
+         PoolManager.putGameObjectToPool(gameObject); //Любая коллизия уничтожит объект, нет смысла искать
          
         /*if (collision.gameObject.tag == "Enemy")
         {
