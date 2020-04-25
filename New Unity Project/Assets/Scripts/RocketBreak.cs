@@ -26,7 +26,8 @@ public class RocketBreak : MonoBehaviour
     {
         if(collision.gameObject.tag == "Platform")
         {
-            Destroy(collision.gameObject);
+            RocketCollideBehaviour(collision); //Лучше убрать в отдельный метод
+            /*Destroy(collision.gameObject);
             RocketSprite.enabled = false;
             RocketDestroyer.enabled = false;
             BoomControl.enabled = true;
@@ -34,9 +35,21 @@ public class RocketBreak : MonoBehaviour
             BoomAnim.enabled = true;
             RocketPlaySound.clip = RocketSounds[1];
             RocketPlaySound.Play();
-            StartCoroutine(BoomTime());
+            StartCoroutine(BoomTime());*/
         }
-        
+    }
+    
+    private void RocketCollideBehaviour(Collision2D collision)
+    {
+        Destroy(collision.gameObject);
+        RocketSprite.enabled = false;
+        RocketDestroyer.enabled = false;
+        BoomControl.enabled = true;
+        BoomSprite.enabled = true;
+        BoomAnim.enabled = true;
+        RocketPlaySound.clip = RocketSounds[1];
+        RocketPlaySound.Play();
+        StartCoroutine(BoomTime());
     }
 
     IEnumerator BoomTime()
