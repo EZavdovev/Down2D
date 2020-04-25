@@ -15,12 +15,12 @@ public class Score : MonoBehaviour
     public Text Recordtxt;
     private const int Kill_score = 10;
     private const int Fall_score = 1000;
+
     private void Start()
     {
         GameManager.EnemyDied.Subscribe(ChangeScore);
         GameManager.PlayerFall.Subscribe(ChangeScore);
         GameManager.PlayerFall.Subscribe(ChangeFloor);
-
         Record = PlayerPrefs.GetInt("Record", Record);
     }
 
@@ -30,6 +30,7 @@ public class Score : MonoBehaviour
         if (type_score == "Fall") return Fall_score;
         return 0;
     }
+
     public void ChangeScore(string type_score)
     {
         ScorePlayer += CalculateScore(type_score);
@@ -41,7 +42,6 @@ public class Score : MonoBehaviour
             Floor++;
     }
 
-    // Update is called once per frame
     void Update()
     {
         PlayerPrefs.SetInt("Record", Record);

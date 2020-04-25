@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject Rocket;
     bool IsNextFloor;
     float Timer;
+
     void Start()
     {
         GameManager.PlayerFall.Subscribe(NextF);
@@ -26,6 +27,7 @@ public class Spawner : MonoBehaviour
         if(info == "Fall")
             IsNextFloor = true;
     }
+
     IEnumerator SpawnObj()
     {
         yield return new WaitForSeconds(Timer);

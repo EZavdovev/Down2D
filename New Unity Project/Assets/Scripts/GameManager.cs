@@ -9,11 +9,10 @@ public class GameManager : MonoBehaviour
     public static AdventureEvent PlayerFall = new AdventureEvent();
     public static EventCleaner EventClean = new EventCleaner();
     public Transform Pool;
-
+    public static Player player;
     private void Start()
     {
+        player = GameObject.FindObjectOfType<Player>();
         PoolManager.init(Pool);
     }
-
-
 }

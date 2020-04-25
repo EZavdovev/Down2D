@@ -56,12 +56,11 @@ public class Player : MonoBehaviour
         }
         GodMod = false;
     }
-    void Damage()
+    public void Damage()
     {
         if (!GodMod)
         {
-            GodMod = true;
-            
+            GodMod = true; 
             StartCoroutine(GodTime());
             Hp--;
             if (Hp <= 0)
@@ -78,18 +77,6 @@ public class Player : MonoBehaviour
     }
     
     //Добавь объекты для коллизий в инспекторе и сделай проверку аналогично ChunkTrigger.cs 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            Damage();
-        }
-        if (collision.gameObject.tag == "Rocket")
-        {
-            Damage();
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Boom")
@@ -97,15 +84,6 @@ public class Player : MonoBehaviour
             Damage();
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Damage();
-        }
-        if (collision.gameObject.tag == "Rocket")
-        {
-            Damage();
-        }
-    }
+    
+        
 }

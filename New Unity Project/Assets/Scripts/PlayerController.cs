@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource PlayerPlaySound;
     public AudioClip[] PlayerSounds;
     float vertical;
+
     void Start()
     {
         IsLeftGo = true;
@@ -19,10 +20,8 @@ public class PlayerController : MonoBehaviour
         FaceRight = true;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-
         vertical = Input.GetAxis("Vertical");
         anim.SetBool("jump", IsGrounded);
         if(anim.GetBool("walk") && anim.GetBool("jump"))
@@ -54,6 +53,7 @@ public class PlayerController : MonoBehaviour
                 speedX = HorizontalSpeed;
             anim.SetBool("walk", true);
         }
+
         if (Input.GetKey(KeyCode.D) && IsRightGo)
         {
             if (FaceRight == false)
@@ -83,11 +83,11 @@ public class PlayerController : MonoBehaviour
     {
         return FaceRight;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Platform")
             IsGrounded = true;
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -113,5 +113,4 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "RightWall")
             IsRightGo = false;
     }
-
 }

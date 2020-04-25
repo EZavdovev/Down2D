@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AdventureEvent : MonoBehaviour
 {
     public List<Action<string>> _callbacks = new List<Action<string>>();
@@ -19,6 +18,7 @@ public class AdventureEvent : MonoBehaviour
             callback(fall);
         }
     }
+
     public void Clear()
     {
       _callbacks.Clear();

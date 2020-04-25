@@ -6,6 +6,7 @@ public class CameraTravel : MonoBehaviour
 {
     float ChangePos = 5.29f;
     public float SpeedCamera;
+
     void Start()
     {
         GameManager.PlayerFall.Subscribe(Travel);
@@ -18,7 +19,6 @@ public class CameraTravel : MonoBehaviour
             StartCoroutine(SlowMove());
         }
     }
-
 
     IEnumerator SlowMove()
     {

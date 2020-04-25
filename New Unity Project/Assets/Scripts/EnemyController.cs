@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public AudioSource EnemyMoveSound;
     public AudioSource EnemyHitSound;
     public AudioClip[] EnemySounds;// 0-ходьба; 1-атака.
+
     void OnEnable()
     {
         VerticalImpulse = 7.0f;
@@ -33,7 +34,6 @@ public class EnemyController : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player") != null)
             Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-
    
     void Update()
     {
@@ -41,13 +41,11 @@ public class EnemyController : MonoBehaviour
         {
             if (anim.GetBool("jump") && !anim.GetBool("hit"))
             {
-
                 if (!EnemyMoveSound.isPlaying)
                 {
                     EnemyMoveSound.clip = EnemySounds[0];
                     EnemyMoveSound.Play();
                 }
-
             }
             else
             {
@@ -61,20 +59,17 @@ public class EnemyController : MonoBehaviour
                     EnemyHitSound.clip = EnemySounds[1];
                     EnemyHitSound.Play();
                 }
-
             }
             else
             {
                 EnemyHitSound.Stop();
             }
         
-
             anim.SetBool("jump", IsGrounded);
             if (Target.transform.position.x > transform.position.x)
             {
                 if (!FaceRight)
                     Flip();
-                
             }
             else
             {
@@ -119,9 +114,7 @@ public class EnemyController : MonoBehaviour
                 {
                     anim.SetBool("hit", false);
                 }
-            }
-
-            
+            }   
         }
     }
 
@@ -144,8 +137,8 @@ public class EnemyController : MonoBehaviour
         {
             IsGrounded = true;
         }
-
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Platform")

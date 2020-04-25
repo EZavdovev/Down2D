@@ -539,6 +539,8 @@ MonoBehaviour:
   PlayerPlaySound: {fileID: 53040842}
   PlayerSounds:
   - {fileID: 8300000, guid: 7c484d69ad65f2a4e94d712ff66c0f98, type: 3}
+  enemy: {fileID: 662377279548037508, guid: 19f9a74dac6873248bbb9aa24aa1ede7, type: 3}
+  rocket: {fileID: 5461053617957592052, guid: 557691384ab21834395dd4cd8a46babc, type: 3}
 --- !u!1 &92755818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,6 +1573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f835d1d6e8fe89a489c09746bd3de786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 53040835}
 --- !u!61 &400503675
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6623,6 +6626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f835d1d6e8fe89a489c09746bd3de786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 53040835}
 --- !u!1 &2059336764
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,12 +22,10 @@ public class Weapon : MonoBehaviour
                 Shoot();
         }
     }
-
     
     void Shoot()
     {
         ShootSound.Play();
         PoolManager.getGameObjectFromPool(Bullet, FirePoint);
-        
     }
 }

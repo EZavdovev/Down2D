@@ -22,20 +22,17 @@ public class RocketBreak : MonoBehaviour
         RocketPlaySound.clip = RocketSounds[0];
         RocketPlaySound.Play();
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Platform")
         {
-            RocketCollideBehaviour(collision); //Лучше убрать в отдельный метод
-            /*Destroy(collision.gameObject);
-            RocketSprite.enabled = false;
-            RocketDestroyer.enabled = false;
-            BoomControl.enabled = true;
-            BoomSprite.enabled = true;
-            BoomAnim.enabled = true;
-            RocketPlaySound.clip = RocketSounds[1];
-            RocketPlaySound.Play();
-            StartCoroutine(BoomTime());*/
+            RocketCollideBehaviour(collision); 
+        }
+
+        if (collision.gameObject == GameManager.player.gameObject)
+        {
+            GameManager.player.Damage();
         }
     }
     

@@ -10,11 +10,13 @@ public class Enemy : MonoBehaviour
     public CapsuleCollider2D collision;
     public AudioSource EnemyPlaySound;
     public AudioClip[] EnemySounds;
+
     public void OnEnable()
     {
         Hp = 1;
         collision.enabled = true;
     }
+
     void Damage()
     {
         Hp--;
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+
     void Die()
     {
         GameManager.EnemyDied.Publish("Enemy");
@@ -31,11 +34,10 @@ public class Enemy : MonoBehaviour
         anim.Play("DieEnemy");
         collision.enabled = false;
         StartCoroutine(DieTime());
-       
     }
+
     IEnumerator DieTime()
     {
-
         yield return new WaitForSeconds(0.3f);
         PoolManager.putGameObjectToPool(gameObject);
     }
@@ -50,6 +52,10 @@ public class Enemy : MonoBehaviour
         {
             Damage();
         }
+        if(collision.gameObject == GameManager.player.gameObject)
+        {
+            GameManager.player.Damage();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,6 +63,14 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Boom")
         {
             Damage();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject == GameManager.player.gameObject)
+        {
+            GameManager.player.Damage();
         }
     }
 }

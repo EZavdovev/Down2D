@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EventCleaner : MonoBehaviour
 {
-   
     public void Clear()
     {
         GameManager.PlayerFall.Clear();

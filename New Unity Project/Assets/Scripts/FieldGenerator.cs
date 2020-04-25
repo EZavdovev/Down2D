@@ -12,6 +12,7 @@ public class FieldGenerator : MonoBehaviour
     int FieldCount = 4;
     float FieldLength = 5.29f;
     List<GameObject> CurrentFields = new List<GameObject>();
+
     void Start()
     {
         GameManager.PlayerFall.Subscribe(ChangeLevel);
@@ -21,7 +22,6 @@ public class FieldGenerator : MonoBehaviour
         FieldXPos = Pos.x;
         for (int i = 0; i < FieldCount; i++)
             SpawnField();
-        
     }
 
     public void ChangeLevel(string type_change)
@@ -32,6 +32,7 @@ public class FieldGenerator : MonoBehaviour
             DestroyField();
         }
     }
+
     void SpawnField()
     { 
         GameObject Field = Instantiate(Fields,Pos,Quaternion.identity);
@@ -44,6 +45,7 @@ public class FieldGenerator : MonoBehaviour
     {
         StartCoroutine(DestroyControl());
     }
+
     IEnumerator DestroyControl()
     {
         yield return new WaitForSeconds(2.0f);
