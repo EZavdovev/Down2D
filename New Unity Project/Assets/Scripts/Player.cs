@@ -76,7 +76,8 @@ public class Player : MonoBehaviour
         GameManager.EventClean.Clear();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
-
+    
+    //Добавь объекты для коллизий в инспекторе и сделай проверку аналогично ChunkTrigger.cs 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
