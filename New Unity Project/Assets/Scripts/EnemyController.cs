@@ -77,7 +77,7 @@ public class EnemyController : MonoBehaviour
                     Flip();
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, Target.position, Speed * Time.deltaTime);
             if (FaceRight == true)
             {
                 RaycastHit2D Hit = Physics2D.Raycast(transform.position, transform.localScale.x * Vector3.right, RayDistance);

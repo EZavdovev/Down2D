@@ -6,18 +6,15 @@ public class EnemySpawner : MonoBehaviour
 {
     public Transform SpawnPos;
     public GameObject Enemy;
-    int Count;
-    int MaxEnemy;
     float Timer;
     bool IsNextFloor;
     const float RightPos = 19.0f;
     void Start()
     {
         GameManager.PlayerFall.Subscribe(NextF);
-        Count = 0;
         Timer = 1.00f;
-        MaxEnemy = 1;
         IsNextFloor = false;
+       // SpawnPos.position += new Vector3(0, 0, 9.584f);
         StartCoroutine(SpawnObj());
     }
 
@@ -38,7 +35,6 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(3.0f);
             Timer -= 0.05f;
-            MaxEnemy++;
             IsNextFloor = false;
         }
         float Pos = Random.Range(0.0f, 1.0f);
